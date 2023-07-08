@@ -52,8 +52,8 @@
            (self (+ acc (- #2# #1#)) (cddr nums)))))))
 
 (defun number->roman (n)
-  (if (zerop n)
-      (error "ZERO cannot be represented by a roman numeral"))
+  (if (<= n 0)
+      (error "Only positive numerals can be represented"))
   (labels ((max-numeral (x)
              (let ((mk (loop for k being the hash-keys in dec-hash
                              when (<= k x)
